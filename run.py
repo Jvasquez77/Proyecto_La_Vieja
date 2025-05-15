@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 """
-Script para iniciar todos los componentes del juego Tic-Tac-Toe multijugador.
+Script para iniciar todos los componentes del juego.
 """
 
 import os
@@ -22,7 +21,6 @@ except ImportError:
 def ensure_dependencies():
     """
     Verifica y asegura que todas las dependencias estén instaladas.
-    Si es necesario, crea un entorno virtual y las instala ahí.
     
     Returns:
         bool: True si las dependencias están disponibles, False si se necesita reiniciar

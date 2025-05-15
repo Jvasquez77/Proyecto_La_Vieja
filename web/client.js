@@ -1,8 +1,3 @@
-/**
- * Cliente Tic-Tac-Toe Multijugador
- * Gestiona la interfaz de usuario y la comunicación con el servidor.
- */
-
 // Configuración del servidor WebSocket
 const WS_SERVER = 'ws://localhost:8765';
 

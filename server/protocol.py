@@ -1,5 +1,5 @@
 """
-Protocolo de comunicación para el juego Tic-Tac-Toe multijugador.
+Protocolo de comunicación para el juego.
 Define los comandos y formatos de mensajes entre cliente y servidor.
 """
 

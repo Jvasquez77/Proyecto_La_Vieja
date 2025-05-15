@@ -1,8 +1,3 @@
-"""
-Servidor principal del juego Tic-Tac-Toe multijugador.
-Se encarga de aceptar conexiones, crear salas y gestionar la comunicación.
-"""
-
 import socket
 import threading
 import uuid
@@ -18,10 +13,6 @@ from protocol import (
 )
 
 class TicTacToeServer:
-    """
-    Servidor principal del juego Tic-Tac-Toe.
-    Gestiona conexiones de clientes y salas de juego.
-    """
     
     def __init__(self, host='0.0.0.0', port=9000):
         """Inicializa el servidor."""
