@@ -87,7 +87,7 @@ y abrirá automáticamente el navegador si se usa la opción --open-browser.
    ```
    Los valores predeterminados son: puerto_ws=8765, host_tcp=localhost, puerto_tcp=9000.
 
-   c. Servir los archivos web (si quieres jugar en red local):
+   c. Servir los archivos web (para acceder desde el navegador):
    ```bash
    cd web
    python3 -m http.server 8000
