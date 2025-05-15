@@ -21,10 +21,10 @@ El sistema sigue una arquitectura cliente-servidor:
 ### Diagrama de Componentes
 
 ```
-┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+|─────────────|       |─────────────|       |─────────────|
 │   Cliente   │       │  Adaptador  │       │  Servidor   │
-│    (Web)    │◄────► │  WebSocket  │◄────► │    TCP/IP   │
-└─────────────┘       └─────────────┘       └─────────────┘
+│    (Web)    │<----->│  WebSocket  │<----->│    TCP/IP   │
+|─────────────|       |─────────────|       |─────────────|
 ```
 
 ### Organización de Archivos
