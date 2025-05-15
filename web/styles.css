@@ -1,0 +1,354 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #e74c3c;
+    --secondary-dark: #c0392b;
+    --accent-color: #2ecc71;
+    --accent-dark: #27ae60;
+    --background-color: #f5f5f5;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --light-text: #777777;
+    --border-color: #dddddd;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Pantallas */
+.screen {
+    padding: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Formularios y botones */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+.accent-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.accent-btn:hover {
+    background-color: var(--accent-dark);
+}
+
+/* Menú principal */
+.menu-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .menu-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.menu-option {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.menu-option h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* Lista de salas */
+.room-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.room-list {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.room-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-item:last-child {
+    border-bottom: none;
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.room-name {
+    font-weight: 600;
+}
+
+.room-creator {
+    font-size: 0.8rem;
+    color: var(--light-text);
+}
+
+.join-btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.no-rooms {
+    padding: 20px;
+    text-align: center;
+    color: var(--light-text);
+}
+
+/* Pantalla de juego */
+.game-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.room-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.game-status {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.turn-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-name {
+    font-weight: 600;
+}
+
+.player-symbol {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.turn-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+.board-cell {
+    aspect-ratio: 1;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.board-cell:hover {
+    background-color: var(--border-color);
+}
+
+.board-cell.x {
+    color: var(--primary-color);
+}
+
+.board-cell.o {
+    color: var(--secondary-color);
+}
+
+.board-cell.win {
+    background-color: rgba(46, 204, 113, 0.3);
+}
+
+#leaveGameBtn {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Pantalla de fin de juego */
+#end-screen {
+    text-align: center;
+}
+
+#endMessage {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Notificaciones */
+.notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+}
+
+.notification {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+    position: relative;
+}
+
+.notification.success {
+    border-left: 4px solid var(--accent-color);
+}
+
+.notification.error {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.notification.info {
+    border-left: 4px solid var(--primary-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+} 

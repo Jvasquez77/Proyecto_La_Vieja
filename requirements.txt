@@ -1,0 +1,3 @@
+# Dependencias para el juego Tic-Tac-Toe multijugador
+websockets>=10.0
+psutil>=5.9.0 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Multijugador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tic-Tac-Toe Multijugador</h1>
+            <p class="subtitle">Juego en red utilizando sockets TCP/IP</p>
+        </header>
+
+        <!-- Pantalla de conexión -->
+        <div id="connection-screen" class="screen">
+            <div class="form-group">
+                <label for="playerName">Tu nombre:</label>
+                <input type="text" id="playerName" placeholder="Ingresa tu nombre" maxlength="15">
+            </div>
+            <button id="connectBtn" class="btn primary-btn">Conectar al Servidor</button>
+        </div>
+
+        <!-- Pantalla de menú principal -->
+        <div id="menu-screen" class="screen hidden">
+            <div class="menu-options">
+                <div class="menu-option">
+                    <h2>Crear una sala</h2>
+                    <div class="form-group">
+                        <label for="roomName">Nombre de la sala:</label>
+                        <input type="text" id="roomName" placeholder="Ingresa un nombre para la sala" maxlength="20">
+                    </div>
+                    <button id="createRoomBtn" class="btn primary-btn">Crear Sala</button>
+                </div>
+                
+                <div class="menu-option">
+                    <h2>Unirse a una sala</h2>
+                    <div class="room-list-container">
+                        <div class="room-list-header">
+                            <h3>Salas disponibles</h3>
+                            <button id="refreshRoomsBtn" class="btn secondary-btn">Actualizar</button>
+                        </div>
+                        <div id="roomList" class="room-list">
+                            <p class="no-rooms">No hay salas disponibles. ¡Crea una nueva o actualiza la lista!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de juego -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-info">
+                <div id="roomInfo" class="room-info">
+                    <h2>Sala: <span id="currentRoomName">Cargando...</span></h2>
+                </div>
+                <div id="gameStatus" class="game-status">
+                    <p>Esperando a otro jugador...</p>
+                </div>
+                <div id="turnInfo" class="turn-info">
+                    <div id="player1" class="player">
+                        <span class="player-name">Jugador 1</span>
+                        <span class="player-symbol">X</span>
+                    </div>
+                    <div id="turnIndicator" class="turn-indicator"></div>
+                    <div id="player2" class="player">
+                        <span class="player-name">Jugador 2</span>
+                        <span class="player-symbol">O</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="board" class="board">
+                <div class="board-cell" data-index="0"></div>
+                <div class="board-cell" data-index="1"></div>
+                <div class="board-cell" data-index="2"></div>
+                <div class="board-cell" data-index="3"></div>
+                <div class="board-cell" data-index="4"></div>
+                <div class="board-cell" data-index="5"></div>
+                <div class="board-cell" data-index="6"></div>
+                <div class="board-cell" data-index="7"></div>
+                <div class="board-cell" data-index="8"></div>
+            </div>
+            
+            <button id="leaveGameBtn" class="btn secondary-btn">Abandonar Partida</button>
+        </div>
+
+        <!-- Pantalla de fin de juego -->
+        <div id="end-screen" class="screen hidden">
+            <h2 id="endMessage">¡Juego Terminado!</h2>
+            <button id="backToMenuBtn" class="btn primary-btn">Volver al Menú</button>
+        </div>
+
+        <!-- Notificaciones -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="client.js"></script>
+</body>
+</html> 

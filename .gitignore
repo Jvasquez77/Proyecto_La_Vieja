@@ -1,0 +1,26 @@
+# Entorno virtual
+venv/
+env/
+.env/
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+
+logs/
+*.log
+
+# Configuraciones IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Archivos específicos del proyecto
+*.pid
+.pytest_cache/ 
