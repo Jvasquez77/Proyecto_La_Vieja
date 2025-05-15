@@ -102,7 +102,7 @@ El proyecto incluye una funcionalidad para liberar recursos (procesos, puertos y
 python3 run.py --cleanup
 ```
 
-Esta utilidad:
+Con el script logramos:
 - Crea automáticamente un entorno virtual e instala las dependencias si es necesario
 - Termina procesos que estén usando los puertos del servidor
 - Elimina archivos temporales y cachés de Python
