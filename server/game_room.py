@@ -1,8 +1,3 @@
-"""
-Módulo que implementa la lógica de una sala de juego para Tic-Tac-Toe.
-Cada sala es un hilo independiente que gestiona dos jugadores y su partida.
-"""
-
 import threading
 import time
 import random
@@ -22,12 +17,7 @@ CMD_ERROR = "ERROR"
 def create_message(command, *args):
     return command + '|' + '|'.join(str(arg) for arg in args)
 
-class GameRoom(threading.Thread):
-    """
-    Representa una sala de juego que gestiona una partida entre dos jugadores.
-    Implementa la lógica del juego y la comunicación con los clientes.
-    """
-    
+class GameRoom(threading.Thread):  
     def __init__(self, room_id, room_name, creator_socket, creator_name):
         """Inicializa una nueva sala de juego."""
         super().__init__()
