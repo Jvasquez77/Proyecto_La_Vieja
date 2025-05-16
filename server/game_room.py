@@ -203,7 +203,6 @@ class GameRoom(threading.Thread):
             self.running = False
     
     def _cleanup(self):
-        """Libera los recursos pero mantiene a los jugadores conectados al servidor."""
         self.running = False
         
         # Notificar a los jugadores que la sala ha sido cerrada
@@ -219,7 +218,7 @@ class GameRoom(threading.Thread):
         except Exception as e:
             print(f"Error al notificar al jugador 2: {e}")
         
-        # Notificar al servidor principal que la sala se ha cerrado
+        # Notificar al servidor que la sala se ha cerrado
         if self.on_room_closed:
             players = []
             if self.player1:

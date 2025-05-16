@@ -46,13 +46,6 @@ El sistema sigue una arquitectura cliente-servidor:
 └── README.md               # Este archivo
 ```
 
-## Requisitos
-
-- Python 3.6 o superior
-- Librerías de Python:
-  - `websockets` (para el adaptador WebSocket)
-  - `psutil` (para gestión de procesos y limpieza)
-
 ## Instalación
 
 El script de inicio configurará automáticamente todo lo necesario, incluyendo la creación de un entorno virtual e instalación de dependencias si es necesario.

@@ -1,7 +1,6 @@
 """
 Script para iniciar todos los componentes del juego.
 """
-
 import os
 import sys
 import subprocess
