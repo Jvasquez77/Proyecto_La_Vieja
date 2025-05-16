@@ -136,7 +136,7 @@ class TicTacToeServer:
         with self.rooms_lock:
             self.leave_current_room(client_socket)
             
-            room = GameRoom(room_id, room_name, client_socket, player_name)
+            room = GameRoom(room_id, room_name, client_socket, player_name, self.on_room_closed)
             self.rooms[room_id] = room
             
             with self.client_lock:
@@ -261,6 +261,22 @@ class TicTacToeServer:
             client_socket.sendall((message + "\n").encode('utf-8'))
         except Exception as e:
             print(f"Error al enviar mensaje: {e}")
+
+    def on_room_closed(self, room_id, players):
+        """Maneja la notificación de que una sala ha sido cerrada."""
+        print(f"Sala {room_id} cerrada, liberando jugadores...")
+        
+        with self.rooms_lock:
+            if room_id in self.rooms:
+                del self.rooms[room_id]
+        
+        # Liberar a los jugadores de la asignación a sala
+        with self.client_lock:
+            for socket, _ in players:
+                if socket in self.client_rooms and self.client_rooms[socket] == room_id:
+                    del self.client_rooms[socket]
+        
+        print(f"Jugadores liberados de la sala {room_id}, ahora pueden unirse a otras salas.")
 
 if __name__ == "__main__":
     # Obtener puerto del primer argumento, o usar 9000 por defecto

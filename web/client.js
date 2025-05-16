@@ -206,6 +206,10 @@ function handleMessage(event) {
                 handleLeaveResponse();
                 break;
                 
+            case 'ROOM_CLOSED':
+                handleRoomClosed(args);
+                break;
+                
             default:
                 console.warn('Comando desconocido:', command);
         }
@@ -328,6 +332,24 @@ function handleRoomList(args) {
 function handleLeaveResponse() {
     backToMenu();
     showNotification('Has abandonado la sala', 'info');
+}
+
+// Manejar notificación de sala cerrada
+function handleRoomClosed(args) {
+    const message = args[0] || "La sala ha sido cerrada.";
+    
+    // Limpiar estado actual
+    currentRoom = null;
+    gameBoard = Array(9).fill(' ');
+    
+    // Volver al menú principal
+    currentState = GameState.MENU;
+    showScreen('menu');
+    
+    // Solicitar lista actualizada de salas
+    requestRoomList();
+    
+    showNotification(message, 'info');
 }
 
 // ========== FUNCIONES DE JUEGO ==========

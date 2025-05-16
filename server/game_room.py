@@ -13,12 +13,13 @@ STATUS_DRAW = "DRAW"
 CMD_UPDATE = "UPDATE"
 CMD_END = "END"
 CMD_ERROR = "ERROR"
+CMD_ROOM_CLOSED = "ROOM_CLOSED"
 
 def create_message(command, *args):
     return command + '|' + '|'.join(str(arg) for arg in args)
 
 class GameRoom(threading.Thread):  
-    def __init__(self, room_id, room_name, creator_socket, creator_name):
+    def __init__(self, room_id, room_name, creator_socket, creator_name, on_room_closed=None):
         """Inicializa una nueva sala de juego."""
         super().__init__()
         self.room_id = room_id
@@ -31,6 +32,9 @@ class GameRoom(threading.Thread):
             "symbol": "X"
         }
         self.player2 = None
+        
+        # Callback para cuando la sala se cierra
+        self.on_room_closed = on_room_closed
         
         # Estado del juego
         self.board = [" " for _ in range(9)]
@@ -199,19 +203,30 @@ class GameRoom(threading.Thread):
             self.running = False
     
     def _cleanup(self):
-        """Limpia los recursos utilizados por la sala."""
+        """Libera los recursos pero mantiene a los jugadores conectados al servidor."""
         self.running = False
         
+        # Notificar a los jugadores que la sala ha sido cerrada
         try:
-            if self.player1:
-                self.player1["socket"].close()
-        except:
-            pass
-            
-        try:
-            if self.player2:
-                self.player2["socket"].close()
-        except:
-            pass
+            if self.player1 and self.player1["socket"]:
+                self._send_to_player(self.player1["socket"], CMD_ROOM_CLOSED, f"La sala {self.room_name} ha sido cerrada. Puedes crear o unirte a otra sala.")
+        except Exception as e:
+            print(f"Error al notificar al jugador 1: {e}")
         
-        print(f"Sala {self.room_id} cerrada y recursos liberados.") 
+        try:
+            if self.player2 and self.player2["socket"]:
+                self._send_to_player(self.player2["socket"], CMD_ROOM_CLOSED, f"La sala {self.room_name} ha sido cerrada. Puedes crear o unirte a otra sala.")
+        except Exception as e:
+            print(f"Error al notificar al jugador 2: {e}")
+        
+        # Notificar al servidor principal que la sala se ha cerrado
+        if self.on_room_closed:
+            players = []
+            if self.player1:
+                players.append((self.player1["socket"], self.player1["name"]))
+            if self.player2:
+                players.append((self.player2["socket"], self.player2["name"]))
+            
+            self.on_room_closed(self.room_id, players)
+        
+        print(f"Sala {self.room_id} cerrada y jugadores liberados para otras salas.") 

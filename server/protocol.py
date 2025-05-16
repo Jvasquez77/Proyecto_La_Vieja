@@ -12,6 +12,7 @@ CMD_END = "END"              # Fin del juego
 CMD_ERROR = "ERROR"          # Mensaje de error
 CMD_LIST = "LIST"            # Listar salas disponibles
 CMD_LEAVE = "LEAVE"          # Abandonar una sala
+CMD_ROOM_CLOSED = "ROOM_CLOSED"  # Notificación de sala cerrada
 
 # Separador para los mensajes
 SEP = "|"
